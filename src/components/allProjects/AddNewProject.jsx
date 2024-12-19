@@ -353,7 +353,7 @@ const AddNewProject = () => {
       formData.append("inspection_location_long", longValue || "");
       formData.append("project_owner_id", selectedOwnerId || "");
       formData.append("status", projectStatus || "");
-      selectedServiceIds.forEach((id) => formData.append("service_ids[]", id));
+      selectedServiceIds.forEach((id,index) => formData.append(`service_ids[${index}]`, id));
       selectedConsultiveIds.forEach((id) =>
         formData.append("project_consultive_ids[]", id)
       );
@@ -365,7 +365,7 @@ const AddNewProject = () => {
       if (projectImage) {
         formData.append("project_image", projectImage);
       }
-
+      console.log(formData);
       console.log("Form Data:", {
         name: projectName,
         branch_id: selectedBranchId,
